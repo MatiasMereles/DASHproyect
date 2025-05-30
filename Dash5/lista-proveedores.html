@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Proveedores - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/MenuInicio.css">
+  <link rel="stylesheet" href="css/lista-proveedores.css">
+</head>
+
+<body class="dark-mode">
+
+  <!-- Header -->
+  <header class="header-lista-proveedores">
+    <button class="back-button-lista" id="volverInicio">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <div class="header-title-lista">
+      <h1>Lista de Proveedores</h1>
+      <p>Gestiona tus proveedores y distribuidores</p>
+    </div>
+    <button id="toggleThemeListaProveedores" class="theme-toggle-button" title="Cambiar tema"></button>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="main-content-lista">
+    
+    <!-- Barra de acciones -->
+    <div class="actions-bar">
+      <div class="search-container">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input type="text" id="searchProveedores" class="search-input" placeholder="Buscar proveedores por nombre o empresa...">
+      </div>
+      <button class="btn-nuevo-proveedor" id="nuevoProveedorBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 12l2 2 4-4"/>
+          <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2h-1.382a1 1 0 0 1-.894-.553L16 2H8L6.276 5.447a1 1 0 0 1-.894.553H4a2 2 0 0 0-2 2v3c0 .552.448 1 1 1"/>
+          <path d="M3 12v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+          <path d="M19 8v6M22 11h-6"/>
+        </svg>
+        Nuevo Proveedor
+      </button>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filters-container">
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="todos">
+          📋 Todos <span class="filter-count" id="countTodos">0</span>
+        </button>
+        <button class="filter-tab" data-filter="distribuidor">
+          🚚 Distribuidores <span class="filter-count" id="countDistribuidor">0</span>
+        </button>
+        <button class="filter-tab" data-filter="mayorista">
+          📦 Mayoristas <span class="filter-count" id="countMayorista">0</span>
+        </button>
+        <button class="filter-tab" data-filter="fabricante">
+          🏭 Fabricantes <span class="filter-count" id="countFabricante">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Lista de proveedores -->
+    <div class="proveedores-container">
+      <div id="proveedoresLista" class="proveedores-lista">
+        <!-- Los proveedores se cargarán dinámicamente aquí -->
+      </div>
+
+      <!-- Estado vacío -->
+      <div id="estadoVacio" class="estado-vacio" style="display: none;">
+        <div class="empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12l2 2 4-4"/>
+            <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2h-1.382a1 1 0 0 1-.894-.553L16 2H8L6.276 5.447a1 1 0 0 1-.894.553H4a2 2 0 0 0-2 2v3c0 .552.448 1 1 1"/>
+          </svg>
+        </div>
+        <h3 class="empty-title">No hay proveedores registrados</h3>
+        <p class="empty-description">Comienza agregando tu primer proveedor</p>
+        <button class="btn-empty-action" id="crearPrimerProveedor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Crear primer proveedor
+        </button>
+      </div>
+
+      <!-- Estado sin resultados de búsqueda -->
+      <div id="sinResultados" class="estado-vacio" style="display: none;">
+        <div class="empty-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </div>
+        <h3 class="empty-title">No se encontraron proveedores</h3>
+        <p class="empty-description">Intenta con otros términos de búsqueda</p>
+        <button class="btn-empty-action" id="limpiarBusqueda">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          Limpiar búsqueda
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal de confirmación para eliminar -->
+  <div id="modalEliminar" class="modal-overlay">
+    <div class="modal-content-eliminar">
+      <div class="modal-icon-eliminar">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3,6 5,6 21,6"/>
+          <path d="M19,6v14a2,2 0,0,1-2,2H7a2,2,0,0,1-2-2V6m3,0V4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2v2"/>
+          <line x1="10" y1="11" x2="10" y2="17"/>
+          <line x1="14" y1="11" x2="14" y2="17"/>
+        </svg>
+      </div>
+      <h3>¿Eliminar proveedor?</h3>
+      <p id="mensajeEliminar">Esta acción no se puede deshacer</p>
+      <div class="modal-actions-eliminar">
+        <button class="btn-cancel-modal" id="cancelarEliminar">Cancelar</button>
+        <button class="btn-delete-modal" id="confirmarEliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de detalle del proveedor -->
+  <div id="modalDetalle" class="modal-overlay">
+    <div class="modal-content-detalle">
+      <div class="modal-header-detalle">
+        <h3>Detalles del Proveedor</h3>
+        <button class="modal-close-detalle" id="cerrarDetalle">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body-detalle" id="contenidoDetalle">
+        <!-- El contenido se carga dinámicamente -->
+      </div>
+      <div class="modal-actions-detalle">
+        <button class="btn-edit-proveedor" id="editarProveedor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+          Editar
+        </button>
+        <button class="btn-contact-proveedor" id="contactarProveedor">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Contactar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/lista-proveedores.js"></script>
+</body>
+
+</html>

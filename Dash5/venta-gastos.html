@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venta y Gastos - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/venta-gastos.css">
+</head>
+
+<body class="dark-mode">
+  <!-- Header con botón atrás -->
+  <div class="page-header">
+    <button class="back-btn" id="back-btn" title="Volver atrás">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <div class="header-content">
+      <h1 class="page-title">Punto de Venta</h1>
+      <p class="page-subtitle">Gestiona tus ventas y gastos de manera eficiente</p>
+    </div>
+  </div>
+
+  <!-- Toggle entre pantallas -->
+  <div class="screen-toggle">
+    <button class="toggle-btn active" data-screen="venta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+      </svg>
+      Venta
+    </button>
+    <button class="toggle-btn" data-screen="gastos">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5Z"/>
+      </svg>
+      Gastos
+    </button>
+  </div>
+
+  <div class="main-container">
+    <!-- PANTALLA DE VENTA -->
+    <div id="venta-screen" class="screen active">
+      <!-- Buscador de productos -->
+      <div class="search-section">
+        <div class="search-container">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="product-search"
+              placeholder="Buscar por nombre o código de barras..."
+              autocomplete="off"
+            >
+            <button class="search-clear" id="search-clear" style="display: none;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+          <button class="barcode-btn" id="barcode-btn" title="Escanear código de barras">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/>
+              <path d="M7 8h.01M7 12h.01M7 16h.01M11 8h.01M11 12h.01M11 16h.01M15 8h.01M15 12h.01M15 16h.01"/>
+            </svg>
+          </button>
+        </div>
+        <div class="search-suggestions" id="search-suggestions"></div>
+      </div>
+
+      <!-- Filtros de categoría -->
+      <div class="category-filters">
+        <h3 class="filters-title">Categorías</h3>
+        <div class="category-grid">
+          <div class="category-filter active" data-category="all">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3h18v18H3zM9 9h6v6H9z"/>
+              </svg>
+            </div>
+            <div class="category-name">Todos</div>
+          </div>
+          <div class="category-filter" data-category="bebidas">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12V7a1 1 0 0 1 1-1h4l2-2h6a1 1 0 0 1 1 1v7M5 12l6-6M5 12l-2 5h18l-2-5"/>
+              </svg>
+            </div>
+            <div class="category-name">Bebidas</div>
+          </div>
+          <div class="category-filter" data-category="comida">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/>
+              </svg>
+            </div>
+            <div class="category-name">Comida</div>
+          </div>
+          <div class="category-filter" data-category="limpieza">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </div>
+            <div class="category-name">Limpieza</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card para agregar producto -->
+      <div class="add-product-card" id="add-product-card">
+        <div class="add-product-content">
+          <div class="add-product-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+          </div>
+          <div class="add-product-text">
+            <div class="add-product-title">Crear Nuevo Producto</div>
+            <div class="add-product-subtitle">Agrega productos rápidamente al inventario</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de productos -->
+      <div class="products-section">
+        <h3 class="section-title">
+          Productos Disponibles
+          <span class="product-counter" id="product-counter">8</span>
+        </h3>
+        
+        <div class="products-grid" id="products-grid">
+          <!-- Productos se generarán dinámicamente -->
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA DE GASTOS -->
+    <div id="gastos-screen" class="screen">
+      <!-- Filtros de categoría para gastos -->
+      <div class="category-filters">
+        <h3 class="filters-title">Categorías de Gastos</h3>
+        <div class="category-grid">
+          <div class="category-filter active" data-category="all">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3h18v18H3zM9 9h6v6H9z"/>
+              </svg>
+            </div>
+            <div class="category-name">Todos</div>
+          </div>
+          <div class="category-filter" data-category="servicios">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+              </svg>
+            </div>
+            <div class="category-name">Servicios</div>
+          </div>
+          <div class="category-filter" data-category="suministros">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+            </div>
+            <div class="category-name">Suministros</div>
+          </div>
+          <div class="category-filter" data-category="otros">
+            <div class="category-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="1"/>
+                <circle cx="19" cy="12" r="1"/>
+                <circle cx="5" cy="12" r="1"/>
+              </svg>
+            </div>
+            <div class="category-name">Otros</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card para agregar gasto -->
+      <div class="add-product-card add-expense-card" id="add-expense-card">
+        <div class="add-product-content">
+          <div class="add-product-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+          </div>
+          <div class="add-product-text">
+            <div class="add-product-title">Registrar Nuevo Gasto</div>
+            <div class="add-product-subtitle">Agrega gastos y controla tus egresos</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de gastos recientes -->
+      <div class="products-section">
+        <h3 class="section-title">
+          Gastos Recientes
+          <span class="product-counter" id="expenses-counter">5</span>
+        </h3>
+        
+        <div class="products-grid" id="expenses-grid">
+          <!-- Gastos se generarán dinámicamente -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón toggle del carrito -->
+  <button class="cart-toggle" id="cart-toggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 22V12h6v10M9 12L4.91 4.91a2.78 2.78 0 0 1 .49-3.4 2.78 2.78 0 0 1 3.4.49L19.09 12"/>
+    </svg>
+    <span class="cart-badge" id="cart-badge" style="display: none;">0</span>
+  </button>
+
+  <!-- Carrito flotante -->
+  <div class="cart-summary" id="cart-summary">
+    <div class="cart-header">
+      <h3 class="cart-title">Carrito de Venta</h3>
+      <button class="cart-close" id="cart-close">&times;</button>
+    </div>
+    
+    <div class="cart-items" id="cart-items">
+      <!-- Items del carrito se generarán dinámicamente -->
+    </div>
+    
+    <div class="cart-total">
+      <div class="cart-total-amount">
+        <span>Total:</span>
+        <span id="cart-total-amount">$0</span>
+      </div>
+    </div>
+    
+    <div class="cart-actions">
+      <button class="btn-primary" id="process-transaction">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        Procesar Venta
+      </button>
+      <button class="btn-danger" id="clear-cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14H6L5 6"/>
+        </svg>
+        Limpiar Carrito
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/venta-gastos.js"></script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Proveedor - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/MenuInicio.css">
+  <link rel="stylesheet" href="css/crear-proveedor.css">
+</head>
+
+<body class="dark-mode">
+
+  <!-- Header -->
+  <header class="header-proveedor">
+    <button class="back-button-proveedor" id="volverProveedores">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <div class="header-title-proveedor">
+      <h1>Nuevo Proveedor</h1>
+      <p>Registra un nuevo proveedor o distribuidor</p>
+    </div>
+    <button id="toggleThemeProveedor" class="theme-toggle-button" title="Cambiar tema"></button>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="main-content-proveedor">
+    <div class="form-container-proveedor">
+      <form id="formCrearProveedor" class="proveedor-form">
+        
+        <!-- Información de la empresa -->
+        <div class="form-section-proveedor">
+          <h3 class="section-title-proveedor">🏢 Información de la Empresa</h3>
+          
+          <div class="form-group-proveedor">
+            <label for="empresaProveedor" class="form-label-proveedor">
+              🏭 Nombre de la Empresa *
+            </label>
+            <input type="text" id="empresaProveedor" class="form-input-proveedor" placeholder="Ej: Distribuidora San Martín S.A." required maxlength="100">
+            <small class="form-help-proveedor">Razón social o nombre comercial de la empresa</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="tipoProveedor" class="form-label-proveedor">
+              🏷️ Tipo de Proveedor *
+            </label>
+            <div class="select-wrapper-proveedor">
+              <select id="tipoProveedor" class="form-select-proveedor" required>
+                <option value="">Seleccionar tipo</option>
+                <option value="distribuidor">Distribuidor</option>
+                <option value="mayorista">Mayorista</option>
+                <option value="fabricante">Fabricante</option>
+                <option value="importador">Importador</option>
+              </select>
+              <svg class="select-arrow-proveedor" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6,9 12,15 18,9"/>
+              </svg>
+            </div>
+            <small class="form-help-proveedor">Categoría del proveedor según su función</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="rubroProveedor" class="form-label-proveedor">
+              📦 Rubro o Especialidad
+            </label>
+            <input type="text" id="rubroProveedor" class="form-input-proveedor" placeholder="Ej: Bebidas y golosinas" maxlength="80">
+            <small class="form-help-proveedor">Opcional - Área de especialización del proveedor</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="productosProveedor" class="form-label-proveedor">
+              🛍️ Productos que Ofrece
+            </label>
+            <textarea id="productosProveedor" class="form-textarea-proveedor" placeholder="Ej: Coca Cola, Pepsi, Fanta, snacks variados, chocolates..." rows="3" maxlength="200"></textarea>
+            <small class="form-help-proveedor">Opcional - Lista de productos principales</small>
+          </div>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="form-section-proveedor">
+          <h3 class="section-title-proveedor">👤 Información de Contacto</h3>
+          
+          <div class="form-group-proveedor">
+            <label for="contactoProveedor" class="form-label-proveedor">
+              👨‍💼 Persona de Contacto *
+            </label>
+            <input type="text" id="contactoProveedor" class="form-input-proveedor" placeholder="Ej: Juan Carlos Pérez" required maxlength="80">
+            <small class="form-help-proveedor">Nombre del representante o vendedor</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="telefonoProveedor" class="form-label-proveedor">
+              📱 Teléfono *
+            </label>
+            <input type="tel" id="telefonoProveedor" class="form-input-proveedor" placeholder="Ej: +54 9 11 1234-5678" required>
+            <small class="form-help-proveedor">Número principal de contacto</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="emailProveedor" class="form-label-proveedor">
+              📧 Correo Electrónico
+            </label>
+            <input type="email" id="emailProveedor" class="form-input-proveedor" placeholder="Ej: ventas@empresa.com">
+            <small class="form-help-proveedor">Opcional - Para cotizaciones y pedidos</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="whatsappProveedor" class="form-label-proveedor">
+              💬 WhatsApp Business
+            </label>
+            <div class="whatsapp-input-proveedor">
+              <input type="tel" id="whatsappProveedor" class="form-input-proveedor" placeholder="Ej: +54 9 11 1234-5678">
+              <button type="button" class="whatsapp-test-btn" id="testWhatsappProveedor" title="Probar WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </button>
+            </div>
+            <small class="form-help-proveedor">Opcional - Para comunicación rápida</small>
+          </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="form-section-proveedor">
+          <h3 class="section-title-proveedor">📍 Dirección</h3>
+          
+          <div class="form-group-proveedor">
+            <label for="direccionProveedor" class="form-label-proveedor">
+              🏠 Dirección Completa *
+            </label>
+            <textarea id="direccionProveedor" class="form-textarea-proveedor" placeholder="Ej: Av. San Martín 1234, Local 5" required rows="2" maxlength="150"></textarea>
+            <small class="form-help-proveedor">Dirección física de la empresa o depósito</small>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="ciudadProveedor" class="form-label-proveedor">
+              🏙️ Ciudad
+            </label>
+            <input type="text" id="ciudadProveedor" class="form-input-proveedor" placeholder="Ej: Buenos Aires" maxlength="50">
+            <small class="form-help-proveedor">Ciudad donde se encuentra</small>
+          </div>
+        </div>
+
+        <!-- Información comercial -->
+        <div class="form-section-proveedor">
+          <h3 class="section-title-proveedor">💼 Información Comercial</h3>
+          
+          <div class="form-row-proveedor">
+            <div class="form-group-proveedor">
+              <label for="condicionesPago" class="form-label-proveedor">
+                💳 Condiciones de Pago
+              </label>
+              <div class="select-wrapper-proveedor">
+                <select id="condicionesPago" class="form-select-proveedor">
+                  <option value="">Seleccionar condición</option>
+                  <option value="contado">Contado</option>
+                  <option value="7-dias">7 días</option>
+                  <option value="15-dias">15 días</option>
+                  <option value="30-dias">30 días</option>
+                  <option value="60-dias">60 días</option>
+                  <option value="otro">Otro</option>
+                </select>
+                <svg class="select-arrow-proveedor" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6,9 12,15 18,9"/>
+                </svg>
+              </div>
+              <small class="form-help-proveedor">Forma de pago que maneja</small>
+            </div>
+
+            <div class="form-group-proveedor">
+              <label for="montoMinimo" class="form-label-proveedor">
+                📊 Pedido Mínimo
+              </label>
+              <div class="currency-input-proveedor">
+                <span class="currency-symbol-proveedor">$</span>
+                <input type="number" id="montoMinimo" class="form-input-proveedor" placeholder="0.00" step="0.01" min="0">
+              </div>
+              <small class="form-help-proveedor">Opcional - Monto mínimo de pedido</small>
+            </div>
+          </div>
+
+          <div class="form-group-proveedor">
+            <label for="observacionesProveedor" class="form-label-proveedor">
+              📝 Observaciones
+            </label>
+            <textarea id="observacionesProveedor" class="form-textarea-proveedor" placeholder="Ej: Entrega los miércoles, descuento por volumen..." rows="3" maxlength="250"></textarea>
+            <small class="form-help-proveedor">Opcional - Información adicional relevante</small>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="form-actions-proveedor">
+          <button type="button" class="btn-cancel-proveedor" id="cancelarProveedor">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+            Cancelar
+          </button>
+          <button type="submit" class="btn-create-proveedor" id="guardarProveedor">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12l2 2 4-4"/>
+              <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2h-1.382a1 1 0 0 1-.894-.553L16 2H8L6.276 5.447a1 1 0 0 1-.894.553H4a2 2 0 0 0-2 2v3c0 .552.448 1 1 1"/>
+            </svg>
+            Crear Proveedor
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal de confirmación -->
+  <div id="modalConfirmacionProveedor" class="modal-overlay">
+    <div class="modal-content-confirm-proveedor">
+      <div class="modal-icon-proveedor">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22,4 12,14.01 9,11.01"/>
+        </svg>
+      </div>
+      <h3>¿Guardar proveedor?</h3>
+      <p>Se creará el proveedor con la información ingresada</p>
+      <div class="modal-actions-proveedor">
+        <button class="btn-cancel-proveedor" id="cancelarGuardarProveedor">Cancelar</button>
+        <button class="btn-confirm-proveedor" id="confirmarGuardarProveedor">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/crear-proveedor.js"></script>
+</body>
+
+</html>
