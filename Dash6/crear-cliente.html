@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Cliente - App Inventario</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/MenuInicio.css">
+  <link rel="stylesheet" href="css/crear-cliente.css">
+</head>
+
+<body class="dark-mode">
+
+  <!-- Header simplificado -->
+  <header class="header-cliente">
+    <button class="back-button-cliente" id="volverClientes">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+    </button>
+    <div class="header-title-cliente">
+      <h1>Nuevo Cliente</h1>
+      <p>Registra los datos del cliente</p>
+    </div>
+    <button id="toggleThemeCliente" class="theme-toggle-button" title="Cambiar tema"></button>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="main-content-cliente">
+    <div class="form-container-cliente">
+      <form id="formCrearCliente" class="cliente-form">
+        
+        <!-- Información personal -->
+        <div class="form-section-cliente">
+          <h3 class="section-title-cliente">👤 Información Personal</h3>
+          
+          <div class="form-group-cliente">
+            <label for="nombreCliente" class="form-label-cliente">
+              📝 Nombre Completo *
+            </label>
+            <input type="text" id="nombreCliente" class="form-input-cliente" placeholder="Ej: Juan Carlos Pérez" required maxlength="100">
+            <small class="form-help-cliente">Nombre y apellido del cliente</small>
+          </div>
+
+
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="form-section-cliente">
+          <h3 class="section-title-cliente">📞 Información de Contacto</h3>
+          
+          <div class="form-group-cliente">
+            <label for="telefonoCliente" class="form-label-cliente">
+              📱 Teléfono *
+            </label>
+            <input type="tel" id="telefonoCliente" class="form-input-cliente" placeholder="Ej: +54 9 11 1234-5678" required>
+            <small class="form-help-cliente">Número principal de contacto</small>
+          </div>
+
+
+
+          <div class="form-group-cliente">
+            <label for="whatsappCliente" class="form-label-cliente">
+              💬 WhatsApp
+            </label>
+            <div class="whatsapp-input-cliente">
+              <input type="tel" id="whatsappCliente" class="form-input-cliente" placeholder="Ej: +54 9 11 1234-5678">
+              <button type="button" class="whatsapp-test-btn" id="testWhatsapp" title="Probar WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+              </button>
+            </div>
+            <small class="form-help-cliente">Opcional - Para comunicación rápida</small>
+          </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="form-section-cliente">
+          <h3 class="section-title-cliente">📍 Dirección</h3>
+          
+          <div class="form-group-cliente">
+            <label for="direccionCliente" class="form-label-cliente">
+              🏠 Dirección Completa *
+            </label>
+            <textarea id="direccionCliente" class="form-textarea-cliente" placeholder="Ej: Av. Corrientes 1234, Piso 5, Depto B" required rows="3" maxlength="200"></textarea>
+            <small class="form-help-cliente">Dirección completa para entregas</small>
+          </div>
+
+          <div class="form-row-cliente">
+            <div class="form-group-cliente">
+              <label for="ciudadCliente" class="form-label-cliente">
+                🏙️ Ciudad
+              </label>
+              <input type="text" id="ciudadCliente" class="form-input-cliente" placeholder="Ej: Buenos Aires" maxlength="50">
+              <small class="form-help-cliente">Ciudad o localidad</small>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Información adicional -->
+        <div class="form-section-cliente">
+          <h3 class="section-title-cliente">📊 Información Adicional</h3>
+          
+          <div class="form-group-cliente">
+            <label for="tipoCliente" class="form-label-cliente">
+              🏷️ Tipo de Cliente
+            </label>
+            <div class="select-wrapper-cliente">
+              <select id="tipoCliente" class="form-select-cliente">
+                <option value="particular">Particular</option>
+                <option value="empresa">Empresa</option>
+                <option value="mayorista">Mayorista</option>
+                <option value="vip">Cliente VIP</option>
+              </select>
+              <svg class="select-arrow-cliente" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6,9 12,15 18,9"/>
+              </svg>
+            </div>
+            <small class="form-help-cliente">Categorización para descuentos y promociones</small>
+          </div>
+
+          <div class="form-group-cliente">
+            <label for="limiteCreditoCliente" class="form-label-cliente">
+              💳 Límite de Crédito
+            </label>
+            <div class="currency-input-cliente">
+              <span class="currency-symbol-cliente">$</span>
+              <input type="number" id="limiteCreditoCliente" class="form-input-cliente" placeholder="0.00" step="0.01" min="0">
+            </div>
+            <small class="form-help-cliente">Opcional - Máximo crédito autorizado</small>
+          </div>
+
+
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="form-actions-cliente">
+          <button type="button" class="btn-cancel-cliente" id="cancelarCliente">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+            Cancelar
+          </button>
+          <button type="submit" class="btn-create-cliente" id="guardarCliente">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            Crear Cliente
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Modal de confirmación -->
+  <div id="modalConfirmacionCliente" class="modal-overlay">
+    <div class="modal-content-confirm-cliente">
+      <div class="modal-icon-cliente">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22,4 12,14.01 9,11.01"/>
+        </svg>
+      </div>
+      <h3>¿Guardar cliente?</h3>
+      <p>Se creará el cliente con la información ingresada</p>
+      <div class="modal-actions-cliente">
+        <button class="btn-cancel-cliente" id="cancelarGuardarCliente">Cancelar</button>
+        <button class="btn-confirm-cliente" id="confirmarGuardarCliente">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/crear-cliente.js"></script>
+</body>
+
+</html>

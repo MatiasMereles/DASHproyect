@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure html and body take full viewport height */
+    margin: 0;
+}
+
+/* Efectos  */
+.blur-in-expand{animation:blur-in-expand 0.4s linear both} @keyframes blur-in-expand{0%{transform:scale(0);filter:blur(12px);opacity:0}100%{transform:scale(1);filter:blur(0);opacity:1}}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/fondo-inicio.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex; /* Make body a flex container */
+    flex-direction: column; /* Stack children vertically */
+    position: relative; /* Needed for absolute positioning of button-container */
+}
+
+a {
+    width: 100%;
+    display: flex;
+}
+
+.container {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */ /* Not strictly needed if text-content handles flex-grow */
+    align-items: flex-start; /* Align content to the left */
+    padding: 20px;
+    flex-grow: 1; /* Allow container to grow and push button down */
+    padding-left: 50px; /* Indent the entire text block from the left */
+    padding-top: 15rem; /* Adjust this to push the text block down from the top if needed */
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align text content to the start (top) within its own flex container */
+    align-items: flex-start; /* Align text lines to the left */
+    flex-grow: 0; /* Prevents text-content from taking up all vertical space */
+    margin-bottom: auto; /* Pushes the text content to the top within the container */
+}
+
+.small-text {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.small-text strong {
+    font-style: italic;
+    
+}
+
+.headline {
+    font-family:"Ancizar Serif", serif ;
+    font-size: 3rem;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left; /* Ensure text is left-aligned within the headline */
+}
+
+.highlight {
+    color: #ff7c1a;
+    font-weight: bold;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px;
+    position: absolute; /* Position the button absolutely */
+    bottom: 0; /* Stick it to the bottom */
+    left: 0;
+    right: 0;
+}
+
+.btn {
+    background-color: black;
+    color: #ff7c1a;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #222;
+}

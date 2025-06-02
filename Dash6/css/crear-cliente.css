@@ -1,0 +1,499 @@
+/* === ESTILOS PARA CREAR CLIENTE === */
+
+/* Header de cliente */
+.header-cliente {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.85), rgba(5, 150, 105, 0.85));
+  backdrop-filter: blur(6px);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 14px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-button-cliente {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+  flex-shrink: 0;
+}
+
+.back-button-cliente:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-2px);
+}
+
+.header-title-cliente {
+  flex: 1;
+  color: white;
+}
+
+.header-title-cliente h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.header-title-cliente p {
+  font-size: 0.85rem;
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido principal */
+.main-content-cliente {
+  padding: 1.5rem 1rem 6rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.form-container-cliente {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.cliente-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Secciones del formulario */
+.form-section-cliente {
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-section-cliente:last-child {
+  border-bottom: none;
+}
+
+.section-title-cliente {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-title-cliente::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(135deg, var(--success), #059669);
+  border-radius: 2px;
+}
+
+/* Grupos de formulario */
+.form-group-cliente {
+  margin-bottom: 1.5rem;
+}
+
+.form-label-cliente {
+  display: block;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.form-input-cliente,
+.form-select-cliente,
+.form-textarea-cliente {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  resize: vertical;
+}
+
+.form-textarea-cliente {
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.form-input-cliente::placeholder,
+.form-textarea-cliente::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input-cliente:focus,
+.form-select-cliente:focus,
+.form-textarea-cliente:focus {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-input-cliente:hover,
+.form-select-cliente:hover,
+.form-textarea-cliente:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Select personalizado */
+.select-wrapper-cliente {
+  position: relative;
+}
+
+.form-select-cliente {
+  appearance: none;
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+.select-arrow-cliente {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.select-wrapper-cliente:hover .select-arrow-cliente {
+  color: var(--success);
+}
+
+/* Filas del formulario */
+.form-row-cliente {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* Input de WhatsApp */
+.whatsapp-input-cliente {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.whatsapp-input-cliente .form-input-cliente {
+  padding-right: 3rem;
+}
+
+.whatsapp-test-btn {
+  position: absolute;
+  right: 0.5rem;
+  background: #25D366;
+  border: none;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.whatsapp-test-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+/* Input de moneda */
+.currency-input-cliente {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-symbol-cliente {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  z-index: 1;
+}
+
+.currency-input-cliente .form-input-cliente {
+  padding-left: 2.5rem;
+}
+
+/* Texto de ayuda */
+.form-help-cliente {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Contador de caracteres */
+.char-counter {
+  display: block;
+  text-align: right;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Botones de acción */
+.form-actions-cliente {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.btn-cancel-cliente,
+.btn-create-cliente {
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  min-width: 140px;
+  justify-content: center;
+}
+
+.btn-cancel-cliente {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btn-cancel-cliente:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.btn-create-cliente {
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: white;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-create-cliente:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-create-cliente:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Modal de confirmación */
+.modal-content-confirm-cliente {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: scale(0.85) translateY(20px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  text-align: center;
+  padding: 2rem;
+}
+
+.modal-overlay.active .modal-content-confirm-cliente {
+  transform: scale(1) translateY(0);
+}
+
+.modal-icon-cliente {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, var(--success), #059669);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+}
+
+.modal-content-confirm-cliente h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.modal-content-confirm-cliente p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.modal-actions-cliente {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-confirm-cliente {
+  background: linear-gradient(135deg, var(--success), #059669);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-confirm-cliente:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+/* Estados de validación */
+.form-input-cliente.error,
+.form-select-cliente.error,
+.form-textarea-cliente.error {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.form-input-cliente.success,
+.form-select-cliente.success,
+.form-textarea-cliente.success {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.error-message-cliente {
+  color: var(--danger);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content-cliente {
+    padding: 1rem 0.5rem 6rem;
+  }
+  
+  .form-section-cliente {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-actions-cliente {
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+  }
+  
+  .btn-cancel-cliente,
+  .btn-create-cliente {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .modal-actions-cliente {
+    flex-direction: column;
+  }
+  
+  .btn-confirm-cliente {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-cliente {
+    padding: 0.875rem 1rem;
+  }
+  
+  .header-title-cliente h1 {
+    font-size: 1.2rem;
+  }
+  
+  .header-title-cliente p {
+    font-size: 0.8rem;
+  }
+  
+  .back-button-cliente {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .form-section-cliente {
+    padding: 1rem 0.75rem;
+  }
+  
+  .form-actions-cliente {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-section-cliente {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.form-section-cliente:nth-child(1) { animation-delay: 0.1s; }
+.form-section-cliente:nth-child(2) { animation-delay: 0.2s; }
+.form-section-cliente:nth-child(3) { animation-delay: 0.3s; }
+.form-section-cliente:nth-child(4) { animation-delay: 0.4s; }
+
+/* Mejoras para modo claro */
+body.light-mode .header-cliente {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+}
+
+body.light-mode .form-container-cliente {
+  background: var(--bg-card);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .modal-content-confirm-cliente {
+  background: var(--bg-primary);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
